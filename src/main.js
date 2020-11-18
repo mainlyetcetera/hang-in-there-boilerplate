@@ -146,7 +146,8 @@ const showTargetView = view => {
   mainView.classList.toggle('hidden');
 }
 
-const saveCurrentPoster = poster => !savedPosters.includes(poster) ? savedPosters.push(poster) : poster;
+const saveCurrentPoster = poster => !savedPosters.includes(poster)
+  ? savedPosters.push(poster) : poster;
 
 const styleMiniPoster = poster => `
   <article class="mini-poster">
@@ -170,12 +171,14 @@ backToMain.addEventListener('click', () => {
 
 posterForm.addEventListener('click', event => {
   event.target.className === 'show-main' ? showTargetView(posterForm) : event;
-  event.target.className === 'make-poster' ? createUserPoster(event, userImage, userTitle, userQuote) : event;
+  event.target.className === 'make-poster' ?
+    createUserPoster(event, userImage, userTitle, userQuote) : event;
 })
 
 mainView.addEventListener('click', event => {
   event.target.className === 'show-random' ? getThreeValues() : event;
   event.target.className === 'show-form' ? showTargetView(posterForm) : event;
-  event.target.className === 'save-poster' ? (saveCurrentPoster(currentPoster), displayPosters()) : event;
+  event.target.className === 'save-poster' ?
+    (saveCurrentPoster(currentPoster), displayPosters()) : event;
   event.target.className === 'show-saved' ? showTargetView(savedView) : event;
 });
