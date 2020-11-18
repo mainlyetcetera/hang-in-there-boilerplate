@@ -140,12 +140,9 @@ backToMain.addEventListener('click', function() {
   showTargetView(savedView);
 });
 
-makeUserPoster.addEventListener('click', function() {
-  createUserPoster(event, userImage, userTitle, userQuote);
-});
-
 posterForm.addEventListener('click', event => {
   event.target.className === 'show-main' ? showTargetView(posterForm) : event;
+  event.target.className === 'make-poster' ? createUserPoster(event, userImage, userTitle, userQuote) : event;
 })
 
 mainView.addEventListener('click', event => {
