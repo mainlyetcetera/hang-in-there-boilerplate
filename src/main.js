@@ -1,38 +1,16 @@
-var savePoster = document.querySelector('.save-poster');
+const backToMain = document.querySelector('.back-to-main');
+const posterImage = document.querySelector('.poster-img');
+const posterTitle = document.querySelector('.poster-title');
+const posterQuote = document.querySelector('.poster-quote');
+const savedView = document.querySelector('.saved-posters');
+const savedPostersGrid = document.querySelector('.saved-posters-grid');
+const posterForm = document.querySelector('.poster-form');
+const mainView = document.querySelector('.main-poster');
+const userImage = document.querySelector('#poster-image-url');
+const userTitle = document.querySelector('#poster-title');
+const userQuote = document.querySelector('#poster-quote');
 
-var showSaved = document.querySelector('.show-saved');
-
-var showRandom = document.querySelector('.show-random');
-
-var showForm = document.querySelector('.show-form');
-
-var showMain = document.querySelector('.show-main');
-
-var backToMain = document.querySelector('.back-to-main');
-
-var posterImage = document.querySelector('.poster-img');
-
-var posterTitle = document.querySelector('.poster-title');
-
-var posterQuote = document.querySelector('.poster-quote');
-
-var makeUserPoster = document.querySelector('.make-poster');
-
-var savedView = document.querySelector('.saved-posters');
-
-var savedPostersGrid = document.querySelector('.saved-posters-grid');
-
-var posterForm = document.querySelector('.poster-form');
-
-var mainView = document.querySelector('.main-poster');
-
-var userImage = document.querySelector('#poster-image-url');
-
-var userTitle = document.querySelector('#poster-title');
-
-var userQuote = document.querySelector('#poster-quote');
-
-var images = [
+let images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
   "./assets/butterfly.jpg",
@@ -53,7 +31,7 @@ var images = [
   "./assets/turtle.jpg"
 ];
 
-var titles = [
+let titles = [
   "determination",
   "success",
   "inspiration",
@@ -91,7 +69,7 @@ var titles = [
   "wisdom"
 ];
 
-var quotes = [
+let quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
@@ -132,11 +110,61 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-var savedPosters = [];
+let savedPosters = [];
+let currentPoster;
 
-var currentPoster;
+const getRandomIndex = array => Math.floor(Math.random() * array.length);
+const createUserPoster = (event, image, title, quote) => {
+  event.preventDefault();
+  saveUserInput(image, title, quote);
+  instantiate(userImage.value, userTitle.value, userQuote.value);
+  showTargetView(posterForm);
+}
 
-backToMain.addEventListener('click', function() {
+const saveUserInput = (image, title, quote) => {
+  !images.includes(image.value) ? images.push(image.value) : images;
+  !titles.includes(title.value) ? titles.push(title.value) : titles;
+  !quotes.includes(quote.value) ? quotes.push(quote.value) : quotes;
+}
+
+const getThreeValues = () => {
+  const randomTitle = titles[getRandomIndex(titles)];
+  const randomImage = images[getRandomIndex(images)];
+  const randomQuote = quotes[getRandomIndex(quotes)];
+  instantiate(randomImage, randomTitle, randomQuote);
+}
+
+const instantiate = (image, title, quote) => {
+  currentPoster = new Poster(image, title, quote);
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+}
+
+const showTargetView = view => {
+  view.classList.toggle('hidden');
+  mainView.classList.toggle('hidden');
+}
+
+const saveCurrentPoster = poster => !savedPosters.includes(poster) ? savedPosters.push(poster) : poster;
+
+const styleMiniPoster = poster => `
+  <article class="mini-poster">
+  <img src=${poster.imageURL}>
+  <h2>${poster.title}</h2>
+  <h4>${poster.quote}</h4>
+  </article>
+`;
+
+const displayPosters = () => {
+  let htmlElements = [];
+  savedPosters.forEach(p => htmlElements.push(styleMiniPoster(p)));
+  savedPostersGrid.innerHTML = htmlElements.join('');
+}
+
+window.onload = getThreeValues();
+
+backToMain.addEventListener('click', () => {
   showTargetView(savedView);
 });
 
@@ -151,79 +179,3 @@ mainView.addEventListener('click', event => {
   event.target.className === 'save-poster' ? (saveCurrentPoster(currentPoster), displayPosters()) : event;
   event.target.className === 'show-saved' ? showTargetView(savedView) : event;
 });
-
-window.onload = getThreeValues();
-
-function createUserPoster(event, inputImage, inputTitle, inputQuote) {
-  event.preventDefault();
-  saveUserInput(inputImage, inputTitle, inputQuote);
-  instantiate(userImage.value, userTitle.value, userQuote.value);
-  showTargetView(posterForm);
-}
-
-function saveUserInput(inputImage, inputTitle, inputQuote) {
-  if (!images.includes(inputImage.value)) {
-    images.push(userImage.value);
-  }
-
-  if (!titles.includes(inputTitle.value)) {
-    titles.push(userTitle.value);
-  }
-
-  if (!quotes.includes(inputQuote.value)) {
-    quotes.push(userQuote.value);
-  }
-
-}
-
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-function getThreeValues() {
-  var randomTitle = titles[getRandomIndex(titles)];
-  var randomImage = images[getRandomIndex(images)];
-  var randomQuote = quotes[getRandomIndex(quotes)];
-  instantiate(randomImage, randomTitle, randomQuote);
-}
-
-function instantiate(image, title, quote) {
-  currentPoster = new Poster(image, title, quote);
-  posterImage.src = currentPoster.imageURL;
-  posterTitle.innerText = currentPoster.title;
-  posterQuote.innerText = currentPoster.quote;
-}
-
-function showTargetView(view) {
-  view.classList.toggle('hidden');
-  mainView.classList.toggle('hidden');
-}
-
-function saveCurrentPoster(poster) {
-  if (!savedPosters.includes(poster)) {
-    savedPosters.push(poster);
-  }
-}
-
-function styleMiniPoster(poster) {
-  var styled = (`
-    <article class="mini-poster">
-    <img src=${poster.imageURL}>
-    <h2>${poster.title}</h2>
-    <h4>${poster.quote}</h4>
-    </article>
-  `);
-
-  return styled;
-}
-
-function displayPosters() {
-  var htmlElements = [];
-
-  for (var i = 0; i < savedPosters.length; i++) {
-    var formattedPoster = styleMiniPoster(savedPosters[i]);
-    htmlElements.push(formattedPoster);
-  }
-
-  savedPostersGrid.innerHTML = htmlElements.join('');
-}
