@@ -114,10 +114,9 @@ let savedPosters = [];
 let currentPoster;
 
 const getRandomIndex = array => Math.floor(Math.random() * array.length);
-
-function createUserPoster(event, inputImage, inputTitle, inputQuote) {
+const createUserPoster = (event, image, title, quote) => {
   event.preventDefault();
-  saveUserInput(inputImage, inputTitle, inputQuote);
+  saveUserInput(image, title, quote);
   instantiate(userImage.value, userTitle.value, userQuote.value);
   showTargetView(posterForm);
 }
