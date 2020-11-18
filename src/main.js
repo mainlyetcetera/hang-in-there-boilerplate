@@ -1,16 +1,16 @@
-var backToMain = document.querySelector('.back-to-main');
-var posterImage = document.querySelector('.poster-img');
-var posterTitle = document.querySelector('.poster-title');
-var posterQuote = document.querySelector('.poster-quote');
-var savedView = document.querySelector('.saved-posters');
-var savedPostersGrid = document.querySelector('.saved-posters-grid');
-var posterForm = document.querySelector('.poster-form');
-var mainView = document.querySelector('.main-poster');
-var userImage = document.querySelector('#poster-image-url');
-var userTitle = document.querySelector('#poster-title');
-var userQuote = document.querySelector('#poster-quote');
+const backToMain = document.querySelector('.back-to-main');
+const posterImage = document.querySelector('.poster-img');
+const posterTitle = document.querySelector('.poster-title');
+const posterQuote = document.querySelector('.poster-quote');
+const savedView = document.querySelector('.saved-posters');
+const savedPostersGrid = document.querySelector('.saved-posters-grid');
+const posterForm = document.querySelector('.poster-form');
+const mainView = document.querySelector('.main-poster');
+const userImage = document.querySelector('#poster-image-url');
+const userTitle = document.querySelector('#poster-title');
+const userQuote = document.querySelector('#poster-quote');
 
-var images = [
+let images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
   "./assets/butterfly.jpg",
@@ -31,7 +31,7 @@ var images = [
   "./assets/turtle.jpg"
 ];
 
-var titles = [
+let titles = [
   "determination",
   "success",
   "inspiration",
@@ -69,7 +69,7 @@ var titles = [
   "wisdom"
 ];
 
-var quotes = [
+let quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
@@ -110,9 +110,8 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-var savedPosters = [];
-
-var currentPoster;
+let savedPosters = [];
+let currentPoster;
 
 backToMain.addEventListener('click', function() {
   showTargetView(savedView);
@@ -159,9 +158,9 @@ function getRandomIndex(array) {
 }
 
 function getThreeValues() {
-  var randomTitle = titles[getRandomIndex(titles)];
-  var randomImage = images[getRandomIndex(images)];
-  var randomQuote = quotes[getRandomIndex(quotes)];
+  let randomTitle = titles[getRandomIndex(titles)];
+  let randomImage = images[getRandomIndex(images)];
+  let randomQuote = quotes[getRandomIndex(quotes)];
   instantiate(randomImage, randomTitle, randomQuote);
 }
 
@@ -184,7 +183,7 @@ function saveCurrentPoster(poster) {
 }
 
 function styleMiniPoster(poster) {
-  var styled = (`
+  let styled = (`
     <article class="mini-poster">
     <img src=${poster.imageURL}>
     <h2>${poster.title}</h2>
@@ -196,10 +195,10 @@ function styleMiniPoster(poster) {
 }
 
 function displayPosters() {
-  var htmlElements = [];
+  let htmlElements = [];
 
-  for (var i = 0; i < savedPosters.length; i++) {
-    var formattedPoster = styleMiniPoster(savedPosters[i]);
+  for (let i = 0; i < savedPosters.length; i++) {
+    let formattedPoster = styleMiniPoster(savedPosters[i]);
     htmlElements.push(formattedPoster);
   }
 
