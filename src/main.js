@@ -134,7 +134,7 @@ const getThreeValues = () => {
   instantiate(randomImage, randomTitle, randomQuote);
 }
 
-function instantiate(image, title, quote) {
+const instantiate = (image, title, quote) => {
   currentPoster = new Poster(image, title, quote);
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
