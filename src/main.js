@@ -136,10 +136,6 @@ var savedPosters = [];
 
 var currentPoster;
 
-showMain.addEventListener('click', function() {
-  showTargetView(posterForm);
-});
-
 backToMain.addEventListener('click', function() {
   showTargetView(savedView);
 });
@@ -149,7 +145,7 @@ makeUserPoster.addEventListener('click', function() {
 });
 
 posterForm.addEventListener('click', event => {
-  
+  event.target.className === 'show-main' ? showTargetView(posterForm) : event;
 })
 
 mainView.addEventListener('click', event => {
