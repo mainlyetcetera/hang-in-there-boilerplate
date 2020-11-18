@@ -164,7 +164,7 @@ const displayPosters = () => {
 
 window.onload = getThreeValues();
 
-backToMain.addEventListener('click', function() {
+backToMain.addEventListener('click', () => {
   showTargetView(savedView);
 });
 
