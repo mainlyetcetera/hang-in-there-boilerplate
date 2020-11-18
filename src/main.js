@@ -160,14 +160,9 @@ function styleMiniPoster(poster) {
   return styled;
 }
 
-function displayPosters() {
+const displayPosters = () => {
   let htmlElements = [];
-
-  for (let i = 0; i < savedPosters.length; i++) {
-    let formattedPoster = styleMiniPoster(savedPosters[i]);
-    htmlElements.push(formattedPoster);
-  }
-
+  savedPosters.forEach(e => htmlElements.push(styleMiniPoster(e)));
   savedPostersGrid.innerHTML = htmlElements.join('');
 }
 
