@@ -141,7 +141,7 @@ const instantiate = (image, title, quote) => {
   posterQuote.innerText = currentPoster.quote;
 }
 
-function showTargetView(view) {
+const showTargetView = view => {
   view.classList.toggle('hidden');
   mainView.classList.toggle('hidden');
 }
