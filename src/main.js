@@ -148,6 +148,10 @@ makeUserPoster.addEventListener('click', function() {
   createUserPoster(event, userImage, userTitle, userQuote);
 });
 
+posterForm.addEventListener('click', event => {
+  
+})
+
 mainView.addEventListener('click', event => {
   event.target.className === 'show-random' ? getThreeValues() : event;
   event.target.className === 'show-form' ? showTargetView(posterForm) : event;
