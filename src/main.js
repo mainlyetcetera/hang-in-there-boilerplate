@@ -146,7 +146,8 @@ const showTargetView = view => {
   mainView.classList.toggle('hidden');
 }
 
-const saveCurrentPoster = poster => !savedPosters.includes(poster) ? savedPosters.push(poster) : poster;
+const saveCurrentPoster = poster => !savedPosters.includes(poster)
+  ? savedPosters.push(poster) : poster;
 
 const styleMiniPoster = poster => `
   <article class="mini-poster">
