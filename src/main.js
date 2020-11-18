@@ -129,6 +129,8 @@ mainView.addEventListener('click', event => {
   event.target.className === 'show-saved' ? showTargetView(savedView) : event;
 });
 
+const getRandomIndex = array => Math.floor(Math.random() * array.length);
+
 window.onload = getThreeValues();
 
 function createUserPoster(event, inputImage, inputTitle, inputQuote) {
@@ -151,10 +153,6 @@ function saveUserInput(inputImage, inputTitle, inputQuote) {
     quotes.push(userQuote.value);
   }
 
-}
-
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
 }
 
 function getThreeValues() {
