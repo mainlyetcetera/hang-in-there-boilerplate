@@ -121,19 +121,10 @@ const createUserPoster = (event, image, title, quote) => {
   showTargetView(posterForm);
 }
 
-function saveUserInput(inputImage, inputTitle, inputQuote) {
-  if (!images.includes(inputImage.value)) {
-    images.push(userImage.value);
-  }
-
-  if (!titles.includes(inputTitle.value)) {
-    titles.push(userTitle.value);
-  }
-
-  if (!quotes.includes(inputQuote.value)) {
-    quotes.push(userQuote.value);
-  }
-
+const saveUserInput = (image, title, quote) => {
+  !images.includes(image.value) ? images.push(image.value) : images;
+  !titles.includes(title.value) ? titles.push(title.value) : titles;
+  !quotes.includes(quote.value) ? quotes.push(quote.value) : quotes;
 }
 
 function getThreeValues() {
