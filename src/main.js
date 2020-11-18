@@ -146,11 +146,7 @@ const showTargetView = view => {
   mainView.classList.toggle('hidden');
 }
 
-function saveCurrentPoster(poster) {
-  if (!savedPosters.includes(poster)) {
-    savedPosters.push(poster);
-  }
-}
+const saveCurrentPoster = poster => !savedPosters.includes(poster) ? savedPosters.push(poster) : poster;
 
 function styleMiniPoster(poster) {
   let styled = (`
