@@ -113,25 +113,7 @@ let quotes = [
 let savedPosters = [];
 let currentPoster;
 
-backToMain.addEventListener('click', function() {
-  showTargetView(savedView);
-});
-
-posterForm.addEventListener('click', event => {
-  event.target.className === 'show-main' ? showTargetView(posterForm) : event;
-  event.target.className === 'make-poster' ? createUserPoster(event, userImage, userTitle, userQuote) : event;
-})
-
-mainView.addEventListener('click', event => {
-  event.target.className === 'show-random' ? getThreeValues() : event;
-  event.target.className === 'show-form' ? showTargetView(posterForm) : event;
-  event.target.className === 'save-poster' ? (saveCurrentPoster(currentPoster), displayPosters()) : event;
-  event.target.className === 'show-saved' ? showTargetView(savedView) : event;
-});
-
 const getRandomIndex = array => Math.floor(Math.random() * array.length);
-
-window.onload = getThreeValues();
 
 function createUserPoster(event, inputImage, inputTitle, inputQuote) {
   event.preventDefault();
@@ -202,3 +184,21 @@ function displayPosters() {
 
   savedPostersGrid.innerHTML = htmlElements.join('');
 }
+
+window.onload = getThreeValues();
+
+backToMain.addEventListener('click', function() {
+  showTargetView(savedView);
+});
+
+posterForm.addEventListener('click', event => {
+  event.target.className === 'show-main' ? showTargetView(posterForm) : event;
+  event.target.className === 'make-poster' ? createUserPoster(event, userImage, userTitle, userQuote) : event;
+})
+
+mainView.addEventListener('click', event => {
+  event.target.className === 'show-random' ? getThreeValues() : event;
+  event.target.className === 'show-form' ? showTargetView(posterForm) : event;
+  event.target.className === 'save-poster' ? (saveCurrentPoster(currentPoster), displayPosters()) : event;
+  event.target.className === 'show-saved' ? showTargetView(savedView) : event;
+});
