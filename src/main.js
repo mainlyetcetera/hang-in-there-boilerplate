@@ -148,17 +148,13 @@ const showTargetView = view => {
 
 const saveCurrentPoster = poster => !savedPosters.includes(poster) ? savedPosters.push(poster) : poster;
 
-function styleMiniPoster(poster) {
-  let styled = (`
-    <article class="mini-poster">
-    <img src=${poster.imageURL}>
-    <h2>${poster.title}</h2>
-    <h4>${poster.quote}</h4>
-    </article>
-  `);
-
-  return styled;
-}
+const styleMiniPoster = poster => `
+  <article class="mini-poster">
+  <img src=${poster.imageURL}>
+  <h2>${poster.title}</h2>
+  <h4>${poster.quote}</h4>
+  </article>
+`;
 
 const displayPosters = () => {
   let htmlElements = [];
