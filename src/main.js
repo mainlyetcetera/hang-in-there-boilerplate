@@ -127,10 +127,10 @@ const saveUserInput = (image, title, quote) => {
   !quotes.includes(quote.value) ? quotes.push(quote.value) : quotes;
 }
 
-function getThreeValues() {
-  let randomTitle = titles[getRandomIndex(titles)];
-  let randomImage = images[getRandomIndex(images)];
-  let randomQuote = quotes[getRandomIndex(quotes)];
+const getThreeValues = () => {
+  const randomTitle = titles[getRandomIndex(titles)];
+  const randomImage = images[getRandomIndex(images)];
+  const randomQuote = quotes[getRandomIndex(quotes)];
   instantiate(randomImage, randomTitle, randomQuote);
 }
 
