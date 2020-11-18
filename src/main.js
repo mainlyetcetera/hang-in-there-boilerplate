@@ -1,35 +1,13 @@
-var savePoster = document.querySelector('.save-poster');
-
-var showSaved = document.querySelector('.show-saved');
-
-var showRandom = document.querySelector('.show-random');
-
-var showForm = document.querySelector('.show-form');
-
-var showMain = document.querySelector('.show-main');
-
 var backToMain = document.querySelector('.back-to-main');
-
 var posterImage = document.querySelector('.poster-img');
-
 var posterTitle = document.querySelector('.poster-title');
-
 var posterQuote = document.querySelector('.poster-quote');
-
-var makeUserPoster = document.querySelector('.make-poster');
-
 var savedView = document.querySelector('.saved-posters');
-
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
-
 var posterForm = document.querySelector('.poster-form');
-
 var mainView = document.querySelector('.main-poster');
-
 var userImage = document.querySelector('#poster-image-url');
-
 var userTitle = document.querySelector('#poster-title');
-
 var userQuote = document.querySelector('#poster-quote');
 
 var images = [
