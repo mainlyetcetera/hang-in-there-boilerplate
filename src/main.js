@@ -157,8 +157,7 @@ const styleMiniPoster = poster => `
 `;
 
 const displayPosters = () => {
-  let htmlElements = [];
-  savedPosters.forEach(p => htmlElements.push(styleMiniPoster(p)));
+  let htmlElements = savedPosters.map(p => styleMiniPoster(p));
   savedPostersGrid.innerHTML = htmlElements.join('');
 }
 
