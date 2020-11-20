@@ -117,7 +117,7 @@ const getRandomIndex = array => Math.floor(Math.random() * array.length);
 const createUserPoster = (event, image, title, quote) => {
   event.preventDefault();
   saveUserInput(image, title, quote);
-  instantiate(userImage.value, userTitle.value, userQuote.value);
+  createPoster(userImage.value, userTitle.value, userQuote.value);
   showTargetView(posterForm);
 }
 
@@ -131,10 +131,10 @@ const getThreeValues = () => {
   const randomTitle = titles[getRandomIndex(titles)];
   const randomImage = images[getRandomIndex(images)];
   const randomQuote = quotes[getRandomIndex(quotes)];
-  instantiate(randomImage, randomTitle, randomQuote);
+  createPoster(randomImage, randomTitle, randomQuote);
 }
 
-const instantiate = (image, title, quote) => {
+const createPoster = (image, title, quote) => {
   currentPoster = new Poster(image, title, quote);
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
@@ -158,8 +158,7 @@ const styleMiniPoster = poster => `
 `;
 
 const displayPosters = () => {
-  let htmlElements = [];
-  savedPosters.forEach(p => htmlElements.push(styleMiniPoster(p)));
+  let htmlElements = savedPosters.map(p => styleMiniPoster(p));
   savedPostersGrid.innerHTML = htmlElements.join('');
 }
 
