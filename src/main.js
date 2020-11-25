@@ -164,8 +164,9 @@ const displayPosters = () => {
 
 window.onload = getThreeValues();
 
-backToMain.addEventListener('click', () => {
-  showTargetView(savedView);
+savedView.addEventListener('click', event => {
+  event.target.className === 'back-to-main' ? 
+    showTargetView(savedView) : event;
 });
 
 posterForm.addEventListener('click', event => {
