@@ -163,10 +163,7 @@ const displayPosters = () => {
   return htmlElements;
 }
 
-const deletePoster = (posters, id) => {  
-  let found = posters.findIndex(poster => poster.id === id);
-  found !== -1 ? posters.splice(found, 1) : posters;
-}
+const deletePoster = id => console.log(id);
 
 // thinking adding another loop here under the condition of finding a poster double-clicked on
   // loop calls deletePoster
@@ -185,9 +182,13 @@ savedView.addEventListener('click', event => {
     showTargetView(savedView) : event;  
 });
 
-savedPostersGrid.addEventListener('dblclick', (event, id) => {
-  
-}
+savedPostersGrid.addEventListener('dblclick', event => {
+  let id = event.target.id;
+  id ? (    
+    deletePoster(id),
+    displayPosters()
+  ) : event;  
+});
 
 posterForm.addEventListener('click', event => {
   event.target.className === 'show-main' ? showTargetView(posterForm) : event;
