@@ -185,6 +185,10 @@ savedView.addEventListener('click', event => {
     showTargetView(savedView) : event;  
 });
 
+savedPostersGrid.addEventListener('dblclick', (event, id) => {
+  
+}
+
 posterForm.addEventListener('click', event => {
   event.target.className === 'show-main' ? showTargetView(posterForm) : event;
   event.target.className === 'make-poster' ?
