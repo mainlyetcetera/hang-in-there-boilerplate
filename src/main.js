@@ -1,4 +1,3 @@
-const backToMain = document.querySelector('.back-to-main');
 const posterImage = document.querySelector('.poster-img');
 const posterTitle = document.querySelector('.poster-title');
 const posterQuote = document.querySelector('.poster-quote');
