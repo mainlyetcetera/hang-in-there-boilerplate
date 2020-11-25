@@ -150,7 +150,7 @@ const saveCurrentPoster = poster => !savedPosters.includes(poster)
   ? savedPosters.push(poster) : poster;
 
 const styleMiniPoster = poster => `
-  <article class="mini-poster">
+  <article class="mini-poster" id="${poster.id}">
   <img src=${poster.imageURL}>
   <h2>${poster.title}</h2>
   <h4>${poster.quote}</h4>
