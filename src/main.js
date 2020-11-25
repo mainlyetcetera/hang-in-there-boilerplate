@@ -1,4 +1,3 @@
-const backToMain = document.querySelector('.back-to-main');
 const posterImage = document.querySelector('.poster-img');
 const posterTitle = document.querySelector('.poster-title');
 const posterQuote = document.querySelector('.poster-quote');
@@ -150,7 +149,7 @@ const saveCurrentPoster = poster => !savedPosters.includes(poster)
   ? savedPosters.push(poster) : poster;
 
 const styleMiniPoster = poster => `
-  <article class="mini-poster">
+  <article class="mini-poster" id="${poster.id}">
   <img src=${poster.imageURL}>
   <h2>${poster.title}</h2>
   <h4>${poster.quote}</h4>
@@ -159,14 +158,24 @@ const styleMiniPoster = poster => `
 
 const displayPosters = () => {
   let htmlElements = savedPosters.map(p => styleMiniPoster(p));
-  savedPostersGrid.innerHTML = htmlElements.join('');
+  savedPostersGrid.innerHTML = htmlElements.join('');  
 }
+
+const deletePoster = id => savedPosters = savedPosters.filter(poster => !(parseInt(id) === poster.id));  
 
 window.onload = getThreeValues();
 
 savedView.addEventListener('click', event => {
   event.target.className === 'back-to-main' ? 
-    showTargetView(savedView) : event;
+    showTargetView(savedView) : event;  
+});
+
+savedPostersGrid.addEventListener('dblclick', event => {
+  let id = event.target.id;
+  id ? (    
+    deletePoster(id),
+    displayPosters()
+  ) : event;  
 });
 
 posterForm.addEventListener('click', event => {
