@@ -159,8 +159,7 @@ const styleMiniPoster = poster => `
 
 const displayPosters = () => {
   let htmlElements = savedPosters.map(p => styleMiniPoster(p));
-  savedPostersGrid.innerHTML = htmlElements.join('');
-  return htmlElements;
+  savedPostersGrid.innerHTML = htmlElements.join('');  
 }
 
 const deletePoster = id => savedPosters = savedPosters.filter(poster => !(parseInt(id) === poster.id));  
