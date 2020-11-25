@@ -163,17 +163,7 @@ const displayPosters = () => {
   return htmlElements;
 }
 
-const deletePoster = id => console.log(id);
-
-// thinking adding another loop here under the condition of finding a poster double-clicked on
-  // loop calls deletePoster
-
-// then write deletePoster separately
-  // input id and event
-  // look for index of element with matching id
-    // save that index to variable
-  // if variable's defined
-    // splice the array at the given index for 1 element
+const deletePoster = id => savedPosters = savedPosters.filter(poster => !(parseInt(id) === poster.id));  
 
 window.onload = getThreeValues();
 
