@@ -160,13 +160,29 @@ const styleMiniPoster = poster => `
 const displayPosters = () => {
   let htmlElements = savedPosters.map(p => styleMiniPoster(p));
   savedPostersGrid.innerHTML = htmlElements.join('');
+  return htmlElements;
 }
+
+const deletePoster = (posters, id) => {  
+  let found = posters.findIndex(poster => poster.id === id);
+  found !== -1 ? posters.splice(found, 1) : posters;
+}
+
+// thinking adding another loop here under the condition of finding a poster double-clicked on
+  // loop calls deletePoster
+
+// then write deletePoster separately
+  // input id and event
+  // look for index of element with matching id
+    // save that index to variable
+  // if variable's defined
+    // splice the array at the given index for 1 element
 
 window.onload = getThreeValues();
 
 savedView.addEventListener('click', event => {
   event.target.className === 'back-to-main' ? 
-    showTargetView(savedView) : event;
+    showTargetView(savedView) : event;  
 });
 
 posterForm.addEventListener('click', event => {
